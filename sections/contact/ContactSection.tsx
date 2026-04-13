@@ -55,27 +55,34 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
 
-    // 1️⃣ SAVE TO SUPABASE
-    const { error } = await supabase.from("contact_messages").insert([
-      {
-        full_name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        service: formData.service,
-        budget: formData.budget,
-        message: formData.message,
-      },
-    ]);
+  // ✅ SAFETY CHECK (IMPORTANT)
+  if (!supabase) {
+    console.log("Supabase not initialized");
+    setLoading(false);
+    return;
+  }
 
-    if (error) {
-      console.log("SUPABASE ERROR:", error);
-      setLoading(false);
-      return;
-    }
+  // 1️⃣ SAVE TO SUPABASE
+  const { error } = await supabase.from("contact_messages").insert([
+    {
+      full_name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      service: formData.service,
+      budget: formData.budget,
+      message: formData.message,
+    },
+  ]);
+
+  if (error) {
+    console.log("SUPABASE ERROR:", error);
+    setLoading(false);
+    return;
+  }
 
     // 2️⃣ SEND EMAIL VIA EDGE FUNCTION
     try {

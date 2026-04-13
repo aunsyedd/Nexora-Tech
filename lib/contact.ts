@@ -1,12 +1,24 @@
 import { supabase } from "./supabase";
 
 export async function submitForm(formData: any) {
-  const { data, error } = await supabase
-    .from("contact_messages")
-    .insert([formData]);
+  if (!supabase) {
+    console.error("Supabase client is not initialized");
+    return { data: null, error: "Supabase not initialized" };
+  }
 
-  console.log("DATA:", data);
-  console.log("ERROR:", error);
+  try {
+    const { data, error } = await supabase
+      .from("contact_messages")
+      .insert([formData]);
 
-  return { data, error };
+    if (error) {
+      console.error("SUPABASE ERROR:", error);
+      return { data: null, error };
+    }
+
+    return { data, error: null };
+  } catch (err) {
+    console.error("UNEXPECTED ERROR:", err);
+    return { data: null, error: err };
+  }
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactHero from "@/sections/contact/ContactHero";
 import ContactSection from "@/sections/contact/ContactSection";
 
+export const dynamic = "force-dynamic"; // ✅ ADD THIS
 export const metadata: Metadata = {
   title: "Contact",
   description:
