@@ -122,10 +122,10 @@ export default function HeroSection() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mt-20"
         >
           {[
-            { label: "Projects Delivered", value: "120+" },
+            { label: "Projects Delivered", value: "10+" },
             { label: "Client Satisfaction", value: "98%" },
-            { label: "Years Building", value: "6+" },
-            { label: "Countries Served", value: "24+" },
+            { label: "Years Building", value: "3+" },
+            { label: "Countries Served", value: "2+" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-display font-bold text-3xl text-white mb-1 gradient-text">

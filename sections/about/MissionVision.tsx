@@ -70,10 +70,10 @@ export default function MissionVision() {
           className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 p-8 rounded-xl border border-[#1A2540] bg-[#08101E]"
         >
           {[
-            { value: "120+", label: "Projects Delivered" },
+            { value: "10+", label: "Projects Delivered" },
             { value: "98%", label: "Client Retention" },
-            { value: "6+", label: "Years of Experience" },
-            { value: "24+", label: "Countries Served" },
+            { value: "3+", label: "Years of Experience" },
+            { value: "2+", label: "Countries Served" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-display font-bold text-3xl gradient-text mb-1">{stat.value}</div>

@@ -8,6 +8,13 @@ export const metadata: Metadata = {
     default: "Nexora Tech — AI-Powered Software Development",
     template: "%s | Nexora Tech",
   },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+
   description:
     "Nexora Tech is a premium software development company specializing in Full Stack Web Development, AI-Powered Applications, SaaS Products, and AI Chatbot Integration.",
   keywords: [

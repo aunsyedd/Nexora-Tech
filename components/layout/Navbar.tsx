@@ -42,7 +42,7 @@ export default function Navbar() {
 <div className="relative w-14 h-14">
 
     <Image
-      src="/assets/image.png"
+      src="/assets/nexxx-Photoroom.png"
       alt="Nexora Tech Logo"
       fill
       className="object-contain"

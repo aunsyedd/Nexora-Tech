@@ -49,10 +49,10 @@ export default function AboutHero() {
           className="flex flex-wrap items-center justify-center gap-3 mt-10"
         >
           {[
-            { year: "2018", event: "Founded" },
-            { year: "2020", event: "First AI product" },
-            { year: "2022", event: "50+ clients" },
-            { year: "2024", event: "120+ projects shipped" },
+            { year: "2023", event: "Founded" },
+            { year: "2023", event: "First AI product" },
+            { year: "2023", event: "5+ clients" },
+            { year: "2024", event: "10+ projects shipped" },
           ].map((item) => (
             <div
               key={item.year}
