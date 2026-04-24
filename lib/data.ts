@@ -145,7 +145,7 @@ export const PROJECTS = [
     category: "Kitchen Website With AI ChatBot",
     description:
       "Chef Station is an AI-powered kitchen website that helps users discover recipes, cooking tips, and culinary guidance through an intelligent chatbot assistant.",
-    tech: ["Next.js", "OpenAI API", "Supabase", "Stripe"],
+    tech: ["Next.js", "Gemini API", "Supabase", "Python"],
     // stats: { users: "12K+", mrr: "$48K", rating: "4.9" },
     color: "cyan",
     gradient: "from-cyan-500 to-blue-600",
