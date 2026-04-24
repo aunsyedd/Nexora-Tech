@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 
 const TECH_BADGES = [
-  "Next.js", "React", "Node.js", "OpenAI", "Python", "AWS", "TypeScript", "PostgreSQL",
+  "Next.js", "React", "Node.js", "Supabase", "Python", "TypeScript", "Angular", "JavaScript"
 ];
 
 export default function HeroSection() {
