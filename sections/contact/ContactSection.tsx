@@ -23,13 +23,7 @@ const SERVICES_OPTIONS = [
   "Other",
 ];
 
-const BUDGET_OPTIONS = [
-  "< $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000+",
-  "Let's discuss",
-];
+const BUDGET_OPTIONS = ["< $500", "$500 – $1k", "$1k – $3k", "$3k+", "Discuss"];
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -55,58 +49,42 @@ export default function ContactSection() {
     }));
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
-  // ✅ SAFETY CHECK (IMPORTANT)
-  if (!supabase) {
-    console.log("Supabase not initialized");
-    setLoading(false);
-    return;
-  }
+    if (!supabase) {
+      console.log("Supabase not initialized");
+      setLoading(false);
+      return;
+    }
 
-  // 1️⃣ SAVE TO SUPABASE
-  const { error } = await supabase.from("contact_messages").insert([
-    {
-      full_name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      service: formData.service,
-      budget: formData.budget,
-      message: formData.message,
-    },
-  ]);
+    const { error } = await supabase.from("contact_messages").insert([
+      {
+        full_name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        service: formData.service,
+        budget: formData.budget,
+        message: formData.message,
+      },
+    ]);
 
-  if (error) {
-    console.log("SUPABASE ERROR:", error);
-    setLoading(false);
-    return;
-  }
+    if (error) {
+      console.log("SUPABASE ERROR:", error);
+      setLoading(false);
+      return;
+    }
 
-    // 2️⃣ SEND EMAIL VIA EDGE FUNCTION
     try {
-      console.log("SENDING TO EMAIL FUNCTION:", {
-  full_name: formData.name,
-  email: formData.email,
-});
-await fetch(
-  "https://yrqqkrkychkewlyfpife.supabase.co/functions/v1/send-email",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      full_name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      service: formData.service,
-      budget: formData.budget,
-      message: formData.message,
-    }),
-  }
-);
+      await fetch(
+        "https://yrqqkrkychkewlyfpife.supabase.co/functions/v1/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
     } catch (err) {
       console.log("EMAIL ERROR:", err);
     }
@@ -114,7 +92,6 @@ await fetch(
     setLoading(false);
     setSubmitted(true);
 
-    // 3️⃣ RESET FORM
     setFormData({
       name: "",
       email: "",
@@ -124,6 +101,11 @@ await fetch(
       message: "",
     });
   };
+
+  const selectClass =
+    "w-full p-3 bg-[#0D1526] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500";
+
+  const optionClass = "bg-[#0D1526] text-white";
 
   return (
     <section className="pb-24 relative">
@@ -148,7 +130,9 @@ await fetch(
             <div className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526]">
               <MessageSquare className="text-green-400" />
               <div>
-                <p className="text-white text-sm">WhatsApp Support (+92-316-0488395)</p>
+                <p className="text-white text-sm">
+                  WhatsApp Support (+92-316-0488395)
+                </p>
                 <p className="text-gray-500 text-xs">Fast response</p>
               </div>
             </div>
@@ -181,7 +165,10 @@ await fetch(
             <div className="rounded-2xl border border-[#1A2540] bg-[#0D1526] p-8">
               {submitted ? (
                 <div className="text-center py-12">
-                  <CheckCircle2 className="text-green-400 mx-auto mb-4" size={40} />
+                  <CheckCircle2
+                    className="text-green-400 mx-auto mb-4"
+                    size={40}
+                  />
                   <h2 className="text-white text-2xl font-bold">
                     Message Sent!
                   </h2>
@@ -198,7 +185,7 @@ await fetch(
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className="w-full p-3 bg-[#0D1526] border border-gray-700 rounded-lg text-white"
                   />
 
                   <input
@@ -208,7 +195,7 @@ await fetch(
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className="w-full p-3 bg-[#0D1526] border border-gray-700 rounded-lg text-white"
                   />
 
                   <input
@@ -217,32 +204,38 @@ await fetch(
                     placeholder="Company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className="w-full p-3 bg-[#0D1526] border border-gray-700 rounded-lg text-white"
                   />
 
+                  {/* SERVICE */}
                   <select
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className={selectClass}
                   >
-                    <option value="">Select Service</option>
+                    <option value="" className={optionClass}>
+                      Select Service
+                    </option>
                     {SERVICES_OPTIONS.map((s) => (
-                      <option key={s} value={s}>
+                      <option key={s} value={s} className={optionClass}>
                         {s}
                       </option>
                     ))}
                   </select>
 
+                  {/* BUDGET */}
                   <select
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className={selectClass}
                   >
-                    <option value="">Select Budget</option>
+                    <option value="" className={optionClass}>
+                      Select Budget
+                    </option>
                     {BUDGET_OPTIONS.map((b) => (
-                      <option key={b} value={b}>
+                      <option key={b} value={b} className={optionClass}>
                         {b}
                       </option>
                     ))}
@@ -255,7 +248,7 @@ await fetch(
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full p-3 bg-black/40 border border-gray-700 rounded-lg text-white"
+                    className="w-full p-3 bg-[#0D1526] border border-gray-700 rounded-lg text-white"
                   />
 
                   <Button type="submit" className="w-full" disabled={loading}>
