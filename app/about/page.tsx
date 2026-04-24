@@ -3,6 +3,7 @@ import AboutHero from "@/sections/about/AboutHero";
 import MissionVision from "@/sections/about/MissionVision";
 import CEOSection from "@/sections/about/CEOSection";
 import ValuesSection from "@/sections/about/ValuesSection";
+import TeamSection from "@/sections/about/TeamSection";
 import CTASection from "@/sections/CTASection";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function AboutPage() {
       <AboutHero />
       <MissionVision />
       <CEOSection />
+      <TeamSection />
       <ValuesSection />
       <CTASection />
     </>

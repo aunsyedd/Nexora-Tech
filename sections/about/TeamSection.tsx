@@ -7,18 +7,28 @@ import Image from "next/image";
 
 
 const HIGHLIGHTS = [
-  "6+ years building full-stack & AI products",
-  "Led engineering for 120+ projects across 24 countries",
-  "Expert in LLM integration, SaaS architecture, and distributed systems",
-  "Advisor to multiple early-stage AI startups",
-  "Speaker on AI-native product development",
+  "AI Full-Stack Developer specializing in scalable web applications",
+  "Focused on building SEO-optimized and performance-driven products",
+  "Experienced in integrating LLMs into modern web systems",
+  "Collaborates with cross-functional teams on real-world client projects",
+  "Passionate about modern AI tools, automation, and clean architecture",
 ];
-
-export default function CEOSection() {
+export default function TeamSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    
+    <section className="py-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_80%_50%,rgba(0,212,255,0.04),transparent)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1A2540] to-transparent" />
+
+         <div className="flex justify-center">
+  <div className="items-center gap-2 mb-9  ">
+    <span className="h-px w-8 bg-[#00D4FF]" />
+    <span className="text-[#00D4FF] text-xs font-display font-semibold tracking-[0.2em] uppercase">
+      Meet the Team
+    </span>
+  </div>
+</div>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -43,7 +53,7 @@ export default function CEOSection() {
   <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#00D4FF]/30 to-[#7C3AED]/30 border-2 border-[#00D4FF]/40 flex items-center justify-center overflow-hidden">
     
     <Image
-      src="/assets/aun piccc.jpg"   // change this to your image path
+      src="/assets/Qasim pic.png"   // change this to your image path
       alt="Profile Image"
       width={128}
       height={128}
@@ -58,8 +68,8 @@ export default function CEOSection() {
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="font-display font-bold text-xl text-white">Syed Aun Muhammad</h3>
-                      <p className="text-[#00D4FF] text-sm font-medium">Founder & CEO</p>
+                      <h3 className="font-display font-bold text-xl text-white">Syed Qasim Raza</h3>
+                      <p className="text-[#00D4FF] text-sm font-medium">AI Full-Stack Developer | SEO Specialist</p>
                     </div>
                     <div className="flex gap-2">
                       {/* <Link href="https://linkedin.com" target="_blank" className="w-8 h-8 rounded-lg border border-[#1A2540] flex items-center justify-center text-[#556070] hover:text-[#00D4FF] hover:border-[#00D4FF]/40 transition-all">
@@ -88,29 +98,20 @@ export default function CEOSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-[#00D4FF]" />
-              <span className="text-[#00D4FF] text-xs font-display font-semibold tracking-[0.2em] uppercase">
-                Meet the Founder
-              </span>
-            </div>
 
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white leading-tight mb-6">
-              Driven by a belief that{" "}
-              <span className="gradient-text">great software changes everything</span>
-            </h2>
 
-            {/* Pull quote */}
-            <div className="relative pl-5 border-l-2 border-[#00D4FF]/40 mb-6">
-              <Quote size={18} className="text-[#00D4FF]/40 mb-2" />
-              <p className="text-[#8896A8] italic leading-relaxed">
-                &ldquo;I started Nexora because I was tired of seeing great ideas fail due to poor engineering. Our job is to make sure that never happens to our clients. We don&apos;t just write code — we build leverage.&rdquo;
-              </p>
-            </div>
+<h2 className="font-display font-bold text-3xl sm:text-4xl text-white leading-tight mb-6">
+  Driven by a passion for{" "}
+  <span className="gradient-text">building impactful digital experiences</span>
+</h2>
 
-            <p className="text-[#8896A8] leading-relaxed mb-8">
-              Syed Aun Muhammad is a full-stack engineer and AI specialist with over 6 years of experience building production-grade systems for startups and enterprise companies alike. He founded Nexora Tech with a clear mission: to make world-class software development accessible to ambitious teams everywhere.
-            </p>
+{/* Pull quote */}
+<div className="relative pl-5 border-l-2 border-[#00D4FF]/40 mb-6">
+  <Quote size={18} className="text-[#00D4FF]/40 mb-2" />
+  <p className="text-[#8896A8] italic leading-relaxed">
+    &ldquo;We believe great products come from strong collaboration and clean engineering. Every line of code we write is focused on delivering real value, performance, and scalability for our clients.&rdquo;
+  </p>
+</div>
 
             <ul className="space-y-3">
               {HIGHLIGHTS.map((item) => (

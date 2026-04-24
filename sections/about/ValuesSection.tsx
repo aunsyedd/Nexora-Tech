@@ -45,8 +45,8 @@ const VALUES = [
 
 export default function ValuesSection() {
   return (
-    <section className="py-24 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1A2540] to-transparent" />
+    <section className="py-20 relative">
+      <div className="absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1A2540] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
