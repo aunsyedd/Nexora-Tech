@@ -99,7 +99,7 @@ export default function Footer() {
               Get In Touch
             </h3>
             <div className="space-y-3 text-sm text-[#8896A8]">
-              <p>hello@nexoratech.io</p>
+              <p>nexoratechintl@gmail.com</p>
               <p>+92-316-0488395</p>
               <p className="leading-relaxed">
                Jeddah, Saudi Arabia

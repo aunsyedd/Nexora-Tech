@@ -122,7 +122,7 @@ export default function ContactSection() {
             <div className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526]">
               <Mail className="text-cyan-400" />
               <div>
-                <p className="text-white text-sm">hello@nexoratech.io</p>
+                <p className="text-white text-sm">nexoratechintl@gmail.com</p>
                 <p className="text-gray-500 text-xs">Email us anytime</p>
               </div>
             </div>
