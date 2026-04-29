@@ -1,14 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Brain, MessageSquare, Layers, Zap, Palette, CheckCircle2 } from "lucide-react";
+import {
+  Code2,
+  Brain,
+  MessageSquare,
+  Layers,
+  Zap,
+  Palette,
+  CheckCircle2,
+} from "lucide-react";
 import { SERVICES } from "@/lib/data";
+import Image from "next/image";
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Code2, Brain, MessageSquare, Layers, Zap, Palette,
+  Code2,
+  Brain,
+  MessageSquare,
+  Layers,
+  Zap,
+  Palette,
 };
 
-const COLOR_CLASSES: Record<string, { icon: string; badge: string; border: string; glow: string; dot: string }> = {
+const COLOR_CLASSES: Record<
+  string,
+  {
+    icon: string;
+    badge: string;
+    border: string;
+    glow: string;
+    dot: string;
+  }
+> = {
   cyan: {
     icon: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
     badge: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
@@ -48,64 +71,88 @@ const COLOR_CLASSES: Record<string, { icon: string; badge: string; border: strin
 
 export default function ServicesGrid() {
   return (
-    <section className="py-16 pb-24">
+    <section className="py-20 pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8">
+        <div className="space-y-10">
           {SERVICES.map((service, i) => {
             const Icon = ICON_MAP[service.icon];
-            const colors = COLOR_CLASSES[service.color] || COLOR_CLASSES.cyan;
+            const colors =
+              COLOR_CLASSES[service.color] || COLOR_CLASSES.cyan;
             const isEven = i % 2 === 0;
 
             return (
               <motion.div
                 key={service.id}
                 id={service.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-8 rounded-2xl border border-[#1A2540] bg-[#0D1526] transition-all duration-300 ${colors.border} ${colors.glow}`}
+                transition={{ duration: 0.6 }}
+                className={`group grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-10 rounded-3xl border border-[#1A2540] bg-[#0D1526] transition-all duration-300 ${colors.border} ${colors.glow}`}
               >
-                {/* Content - alternates sides */}
+                {/* LEFT CONTENT */}
                 <div className={isEven ? "order-1" : "order-1 lg:order-2"}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-11 h-11 rounded-xl border flex items-center justify-center ${colors.icon}`}>
-                      <Icon size={20} />
+                  <div className="flex items-center gap-4 mb-5">
+                    <div
+                      className={`w-14 h-14 rounded-xl border flex items-center justify-center ${colors.icon}`}
+                    >
+                      <Icon size={24} />
                     </div>
-                    <span className={`text-xs font-mono px-2.5 py-1 rounded-full border ${colors.badge}`}>
+
+                    <span
+                      className={`text-sm font-mono px-3 py-1.5 rounded-full border ${colors.badge}`}
+                    >
                       {service.tagline}
                     </span>
                   </div>
 
-                  <h2 className="font-display font-bold text-2xl sm:text-3xl text-white mb-4">
+                  <h2 className="font-display font-bold text-3xl sm:text-4xl text-white mb-5">
                     {service.title}
                   </h2>
-                  <p className="text-[#8896A8] leading-relaxed mb-6">{service.description}</p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <p className="text-[#8896A8] leading-relaxed mb-6 text-lg">
+                    {service.description}
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center gap-2 text-sm text-[#8896A8]">
-                        <CheckCircle2 size={14} className="text-[#00D4FF] shrink-0" />
+                      <div
+                        key={feature}
+                        className="flex items-center gap-2 text-sm text-[#8896A8]"
+                      >
+                        <CheckCircle2
+                          size={16}
+                          className="text-[#00D4FF] shrink-0"
+                        />
                         {feature}
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Visual card */}
+                {/* RIGHT VISUAL */}
                 <div className={isEven ? "order-2" : "order-2 lg:order-1"}>
-                  <div className={`relative rounded-xl border bg-gradient-to-br ${service.gradient} border-[#1A2540] p-6 h-48 flex items-center justify-center overflow-hidden`}>
+                  <div
+                    className={`relative rounded-3xl border bg-gradient-to-br ${service.gradient} border-[#1A2540] p-10 h-80 flex items-center justify-center overflow-hidden`}
+                  >
                     <div className="absolute inset-0 bg-grid opacity-30" />
+
                     <div className="relative z-10 text-center">
-                      <div className={`w-16 h-16 rounded-2xl border mx-auto flex items-center justify-center mb-3 ${colors.icon} shadow-lg`}>
-                        <Icon size={30} />
+                      {/* 🔥 HUGE IMAGE */}
+                      <div
+                        className={`w-40 h-40 rounded-3xl border mx-auto mb-6 ${colors.icon} shadow-xl overflow-hidden relative`}
+                      >
+                        <Image
+                          src={service.image || "/assets/default.png"}
+                          alt={service.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
                       </div>
-                      <p className="font-display font-bold text-white text-lg">{service.title}</p>
-                      <div className="flex justify-center gap-1 mt-2">
-                        {[...Array(3)].map((_, j) => (
-                          <span key={j} className={`w-1.5 h-1.5 rounded-full ${colors.dot} ${j === 1 ? "opacity-100" : "opacity-40"}`} />
-                        ))}
-                      </div>
+
+                      <p className="font-display font-bold text-white text-2xl">
+                        {service.title}
+                      </p>
                     </div>
                   </div>
                 </div>

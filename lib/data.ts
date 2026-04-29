@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import Image from "next/image";
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,6 +21,7 @@ export const SERVICES = [
  {
   id: "fullstack",
   icon: "Code2",
+image: "/assets/full-stack.jpg",
   title: "Full Stack Development",
   tagline: "End-to-end web solutions",
   description:
@@ -39,6 +42,7 @@ export const SERVICES = [
 {
   id: "ai-apps",
   icon: "Brain",
+  image: "/assets/ai.jpg",
   title: "AI-Powered Applications",
   tagline: "Intelligence baked in",
   description:
@@ -59,6 +63,7 @@ export const SERVICES = [
 {
   id: "chatbot",
   icon: "MessageSquare",
+    image: "/assets/chatbot.jpg",
   title: "AI Chatbot Integration",
   tagline: "Conversational AI at scale",
   description:
@@ -75,10 +80,12 @@ export const SERVICES = [
   gradient: "from-cyan-500/10 to-teal-500/10",
   border: "border-cyan-500/20",
   glow: "rgba(0,212,255,0.15)",
+  
 },
 {
   id: "saas",
   icon: "Layers",
+    image: "/assets/saas.jpg",
   title: "SaaS Product Development",
   tagline: "From concept to recurring revenue",
   description:
@@ -99,6 +106,7 @@ export const SERVICES = [
 {
   id: "api",
   icon: "Zap",
+    image: "/assets/api.jpg",
   title: "API Development & Integration",
   tagline: "Connect everything",
   description:
@@ -116,9 +124,12 @@ export const SERVICES = [
   border: "border-yellow-500/20",
   glow: "rgba(234,179,8,0.15)",
 },
+
 {
+
   id: "uiux",
   icon: "Palette",
+    image: "/assets/ui.jpg",
   title: "UI/UX Design Services",
   tagline: "Design that converts",
   description:
@@ -136,6 +147,7 @@ export const SERVICES = [
   border: "border-pink-500/20",
   glow: "rgba(236,72,153,0.15)",
 },
+
 ];
 
 export const PROJECTS = [
