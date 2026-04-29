@@ -24,7 +24,7 @@ export default function TeamSection() {
   <div className="items-center gap-2 mb-9  ">
     <span className="h-px w-8 bg-[#00D4FF]" />
     <span className="text-[#00D4FF] text-xs font-display font-semibold tracking-[0.2em] uppercase">
-      Meet the Team
+      Meet the TL
     </span>
   </div>
 </div>
