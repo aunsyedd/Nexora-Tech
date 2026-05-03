@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Zap, Twitter, Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { Zap, Twitter, Github, Linkedin, Mail, ArrowRight , Instagram} from "lucide-react";
 import { NAV_LINKS, SERVICES } from "@/lib/data";
 import Image from "next/image";
 
 const SOCIAL_LINKS = [
   // { icon: Twitter, href: "https://twitter.com/nexoratech", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/nexora___tech/", label: "Instagram" },
   // { icon: Github, href: "https://github.com/nexoratech", label: "GitHub" },
   // { icon: Linkedin, href: "https://linkedin.com/company/nexoratech", label: "LinkedIn" },
   // { icon: Mail, href: "mailto:hello@nexoratech.io", label: "Email" },
@@ -38,7 +39,7 @@ export default function Footer() {
               Building intelligent software solutions with AI & full stack engineering. Premium development for ambitious companies.
             </p>
             <div className="flex items-center gap-3">
-              {/* {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+              {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                 <Link
                   key={label}
                   href={href}
@@ -49,7 +50,7 @@ export default function Footer() {
                 >
                   <Icon size={15} />
                 </Link>
-              ))} */}
+              ))}
             </div>
           </div>
 
