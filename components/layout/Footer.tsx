@@ -7,7 +7,7 @@ const SOCIAL_LINKS = [
   // { icon: Twitter, href: "https://twitter.com/nexoratech", label: "Twitter" },
   { icon: Instagram, href: "https://www.instagram.com/nexora___tech/", label: "Instagram" },
   // { icon: Github, href: "https://github.com/nexoratech", label: "GitHub" },
-  // { icon: Linkedin, href: "https://linkedin.com/company/nexoratech", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/nexora-tech-189b44407/", label: "LinkedIn" },
   // { icon: Mail, href: "mailto:hello@nexoratech.io", label: "Email" },
 ];
 
