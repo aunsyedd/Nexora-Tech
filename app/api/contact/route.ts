@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 
 /* =========================
-   INIT (outside handler)
+   INIT (outside handler)     DATA ENETED
 ========================== */
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
