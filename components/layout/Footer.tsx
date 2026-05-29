@@ -101,7 +101,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 text-sm text-[#8896A8]">
               <p>nexoratechintl@gmail.com</p>
-              <p>+92-316-0488395</p>
+              <p>+92-313-0143478</p>
               <p className="leading-relaxed">
                Jeddah, Saudi Arabia
               

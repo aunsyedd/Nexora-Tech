@@ -11,7 +11,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { supabase } from "@/lib/supabase";
+
 
 const SERVICES_OPTIONS = [
   "Full Stack Development",
@@ -53,42 +53,39 @@ export default function ContactSection() {
     e.preventDefault();
     setLoading(true);
 
-    if (!supabase) {
-      console.log("Supabase not initialized");
-      setLoading(false);
-      return;
-    }
+try {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
 
-    const { error } = await supabase.from("contact_messages").insert([
-      {
-        full_name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        service: formData.service,
-        budget: formData.budget,
-        message: formData.message,
-      },
-    ]);
+  const data = await response.json();
 
-    if (error) {
-      console.log("SUPABASE ERROR:", error);
-      setLoading(false);
-      return;
-    }
+  if (!response.ok) {
+    console.log(data.error);
+    setLoading(false);
+    return;
+  }
 
-    try {
-      await fetch(
-        "https://yrqqkrkychkewlyfpife.supabase.co/functions/v1/send-email",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-    } catch (err) {
-      console.log("EMAIL ERROR:", err);
-    }
+  setSubmitted(true);
 
+  setFormData({
+    name: "",
+    email: "",
+    company: "",
+    service: "",
+    budget: "",
+    message: "",
+  });
+
+} catch (err) {
+  console.log(err);
+}
+
+setLoading(false);
     setLoading(false);
     setSubmitted(true);
 
@@ -119,23 +116,81 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-2 space-y-6"
           >
-            <div className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526]">
-              <Mail className="text-cyan-400" />
-              <div>
-                <p className="text-white text-sm">nexoratechintl@gmail.com</p>
-                <p className="text-gray-500 text-xs">Email us anytime</p>
-              </div>
-            </div>
+<a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=nexoratechintl@gmail.com&su=Project%20Inquiry%20-%20Nexora%20Tech"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-start gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526] hover:border-cyan-400 hover:bg-[#101B31] transition-all duration-300"
+>
+  <Mail className="text-cyan-400 mt-1" />
 
-            <div className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526]">
-              <MessageSquare className="text-green-400" />
-              <div>
-                <p className="text-white text-sm">
-                  WhatsApp Support (+92-316-0488395)
-                </p>
-                <p className="text-gray-500 text-xs">Fast response</p>
-              </div>
-            </div>
+  <div className="flex-1">
+    <p className="text-white text-sm font-medium">
+      nexoratechintl@gmail.com
+    </p>
+
+    <p className="text-gray-500 text-xs mb-3">
+      Email us anytime for AI & software solutions
+    </p>
+
+    <div className="flex flex-wrap gap-2">
+      {[
+        "Start New Project",
+        "Request Quote",
+        "AI Consultation",
+        "Partnership Inquiry",
+        "Technical Support",
+      ].map((item) => (
+        <span
+          key={item}
+          className="text-[11px] px-3 py-1 rounded-full border border-[#22314F] text-gray-300 bg-[#111827]"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>
+
+<a
+  href="https://wa.me/923130143478?text=Hi%20Nexora%20Tech!%20I%20want%20to%20discuss%20my%20project."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-start gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526] hover:border-green-400 hover:bg-[#101B31] transition-all duration-300"
+>
+  <MessageSquare className="text-green-400 mt-1" />
+
+  <div className="flex-1">
+    <p className="text-white text-sm font-medium">
+      WhatsApp Support (+92-313-0143478)
+    </p>
+
+    <p className="text-gray-500 text-xs mb-3">
+      Fast response • Available for AI & software projects
+    </p>
+    <p className="text-gray-500 text-xs mb-3">
+      Click Here Contact Us Via Whatsapp
+    </p>
+
+    {/* Pre Questions */}
+    <div className="flex flex-wrap gap-2">
+      {[
+        "Need AI Chatbot",
+        "Build SaaS Product",
+        "Web App Development",
+        "UI/UX Design",
+        "API Integration",
+      ].map((item) => (
+        <span
+          key={item}
+          className="text-[11px] px-3 py-1 rounded-full border border-[#22314F] text-gray-300 bg-[#111827]"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>
 
             <div className="flex items-center gap-4 p-4 rounded-xl border border-[#1A2540] bg-[#0D1526]">
               <MapPin className="text-purple-400" />
