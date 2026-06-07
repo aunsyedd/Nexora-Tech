@@ -1,11 +1,13 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
 
 export const SITE_URL = "https://nexoratech.io";
 
@@ -16,6 +18,8 @@ export const NAV_LINKS = [
   { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/contact" },
 ];
+
+
 
 export const SERVICES = [
  {
@@ -151,20 +155,51 @@ image: "/assets/full-stack.jpg",
 ];
 
 export const PROJECTS = [
-  {
-    id: 1,
-    title: "Chef Station",
-    category: "Kitchen Website With AI ChatBot",
-    description:
-      "Chef Station is an AI-powered kitchen website that helps users discover recipes, cooking tips, and culinary guidance through an intelligent chatbot assistant.",
-    tech: ["Next.js", "Gemini API", "Supabase", "Python"],
-    // stats: { users: "12K+", mrr: "$48K", rating: "4.9" },
-    color: "cyan",
-    gradient: "from-cyan-500 to-blue-600",
-    featured: true,
-      image: "/assets/chef station main.jpg", // ✅ MUST BE EXACT
-
-  },
+{
+  
+  id: 1,
+  title: "Chef Station",
+  category: "Kitchen Website With AI ChatBot",
+  description:
+    "Chef Station is an AI-powered kitchen website that helps users discover recipes, cooking tips, and culinary guidance through an intelligent chatbot assistant.",
+  tech: ["Next.js", "Gemini API", "Supabase", "Python"],
+  color: "cyan",
+  gradient: "from-cyan-500 to-blue-600",
+  featured: true,
+  image: "/assets/chef station main.jpg",
+  // url: "https://chefstation.com" // Replace with actual URL
+},
+{
+  id: 2,
+  title: "Redline VFX",
+  category: "VFX & Creative Studio Website",
+  description:
+    "Redline VFX is a professional visual effects and creative studio website showcasing high-end VFX projects, motion graphics, animation services, and digital content production.",
+  tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  color: "red",
+  gradient: "from-red-500 to-orange-600",
+  featured: true,
+  image: "/redlineee.jpg",
+  // url: "https://redlinevfx.com"
+},
+{
+  id: 3,
+  title: "Nexora Invoices",
+  category: "Smart Invoice & VAT Management Software",
+  description:
+    "Nexora Invoices is a modern invoicing and business management platform designed for companies in KSA and UAE. It enables businesses to create tax invoices, manage customers, calculate VAT automatically, generate QR-compliant invoices, and export or print documents with ease.",
+  tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+  color: "blue",
+  gradient: "from-cyan-500 to-blue-600",
+  featured: true,
+  image: "/assets/invoice.jpg",
+  // url: "https://invoice.nexoratech.io",
+  stats: {
+    invoices: "10K+",
+    clients: "500+",
+    uptime: "99.9%"
+  }
+}
   // {
   //   id: 2,
   //   title: "FlowDesk",
