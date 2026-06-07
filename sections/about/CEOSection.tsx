@@ -59,7 +59,9 @@ export default function CEOSection() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h3 className="font-display font-bold text-xl text-white">Syed Aun Muhammad</h3>
-                      <p className="text-[#00D4FF] text-sm font-medium">Founder & CEO</p>
+                  <p className="text-[#00D4FF] text-sm font-medium">
+  AI Full-Stack Specialist & R&D Executive
+</p>
                     </div>
                     <div className="flex gap-2">
                       {/* <Link href="https://linkedin.com" target="_blank" className="w-8 h-8 rounded-lg border border-[#1A2540] flex items-center justify-center text-[#556070] hover:text-[#00D4FF] hover:border-[#00D4FF]/40 transition-all">

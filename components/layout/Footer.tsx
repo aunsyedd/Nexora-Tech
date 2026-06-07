@@ -122,8 +122,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Nexora Tech. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-[#556070] text-xs">
-            <span>CEO: Syed Aun Muhammad</span>
-            <span>•</span>
+            {/* <span>CEO: Syed Aun Muhammad</span> */}
+            {/* <span>•</span> */}
             <Link href="/privacy" className="hover:text-[#8896A8] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#8896A8] transition-colors">Terms</Link>
           </div>
